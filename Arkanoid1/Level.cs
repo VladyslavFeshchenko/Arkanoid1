@@ -14,8 +14,8 @@ namespace Arkanoid1
         {
 
             Field field = new Field(0xFFFFFF00, 0, 0, graphics.ClientWidth, graphics.ClientHeight);
-            Bat bat = new Bat(graphics, 100, 600);
-            Ball ball = new Ball(graphics, 20, 300);
+            Bat bat = new Bat(graphics, 100, 600, 130, 30);
+            Ball ball = new Ball(graphics, 20, 300, 20, 20);
 
             Target[] targets = new Target[20];
 
@@ -23,10 +23,10 @@ namespace Arkanoid1
             {
 
                 if (i % 2 == 0)
-                    targets[i] = new Target(graphics, graphics.ClientWidth * (i+1) / targets.Length - 32, 50);
+                    targets[i] = new Target(graphics, graphics.ClientWidth * (i+1) / targets.Length - 32, 50, 32 , 32);
 
                 else
-                    targets[i] = new Target(graphics, graphics.ClientWidth * (i+1) / targets.Length - 32, 25);
+                    targets[i] = new Target(graphics, graphics.ClientWidth * (i+1) / targets.Length - 32, 25, 32, 32);
             }
 
             while (ball.speedX != 0 && ball.count < targets.Length * 10)

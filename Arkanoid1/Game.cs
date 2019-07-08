@@ -9,24 +9,24 @@ namespace Arkanoid1
 {
     class Game
     {
-        public void PlayGame ()
+        public void PlayGame()
         {
 
             while (true)
             {
 
-                Console.CursorVisible = false;
                 ConsoleGraphics graphics = new ConsoleGraphics();
+                Console.CursorVisible = false;
 
-                StartButton start = new StartButton(graphics, graphics.ClientWidth / 2 - 100, graphics.ClientHeight / 2 - 150);
-                ExitButton exit = new ExitButton(graphics, graphics.ClientWidth / 2 - 95, graphics.ClientHeight / 2);
+                MenuButtons start = new MenuButtons(graphics, 0, 0, 200, 50, graphics.ClientWidth / 2 - 100, graphics.ClientHeight / 2 - 150);
+                MenuButtons exit = new MenuButtons(graphics, 200, 270, 190, 50, graphics.ClientWidth / 2 - 95, graphics.ClientHeight / 2);
 
-                while (exit.PushExit() == false)
+                while (!exit.Push())
                 {
                     start.Render(graphics);
                     exit.Render(graphics);
 
-                    if (start.PushStart() == true || exit.pushExit == true)
+                    if (start.Push() == true || exit.Push() == true)
                     {
                         break;
                     }
@@ -35,7 +35,7 @@ namespace Arkanoid1
                     System.Threading.Thread.Sleep(10);
                 }
 
-                if (exit.pushExit == true)
+                if (exit.Push() == true)
                 {
                     break;
                 }

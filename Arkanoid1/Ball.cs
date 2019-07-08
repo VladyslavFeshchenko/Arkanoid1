@@ -14,11 +14,13 @@ namespace Arkanoid1
 
         public int count = 0;
 
-        public Ball(ConsoleGraphics graphics, int x, int y)
+        public Ball(ConsoleGraphics graphics, int x, int y, int w, int h)
         {
 
             X = x;
             Y = y;
+            W = w;
+            H = h;
 
             Image = graphics.LoadImage("breakout_sprites.png");
         }
@@ -26,14 +28,14 @@ namespace Arkanoid1
         public override void Render(ConsoleGraphics graphics)
         {
 
-            graphics.DrawImagePart(Image, 160, 200, 20, 20, X, Y);
+            graphics.DrawImagePart(Image, 160, 200, W, H, X, Y);
 
         }
 
         public void ToBeatOfTheField(Field field)
         {
 
-            if (X <= 5 || X >= field.w - 20)
+            if (X <= 5 || X >= field.w - W)
             {
                 speedX *= -1;
             }
@@ -43,7 +45,7 @@ namespace Arkanoid1
                 speedY *= -1;
             }
 
-            if (Y > field.h - 20)
+            if (Y > field.h - H)
             {
                 speedX = 0;
                 speedY = 0;
@@ -56,28 +58,28 @@ namespace Arkanoid1
         public void ToBeatOfTheBat(Bat bat)
         {
 
-            if (Y + 20 >= bat.Y && X + 20 >= bat.X && X <= bat.X + 130)
+            if (Y + H >= bat.Y && X + W >= bat.X && X <= bat.X + bat.W)
             {
                 speedY = -10;
 
                 if (speedX > 0)
                 {
-                    if (X + 20 >= bat.X && X <= bat.X + 20)
+                    if (X + W >= bat.X && X <= bat.X + bat.W/7)
                     {
                         speedX = -13;
                         speedY = -7;
                     }
-                    if (X + 20 >= bat.X + 20 && X <= bat.X + 65)
+                    if (X + W >= bat.X + 20 && X <= bat.X + bat.W/2)
                     {
                         speedX = -7;
                         speedY = -13;
                     }
-                    if (X + 20 >= bat.X + 65 && X <= bat.X + 110)
+                    if (X + W >= bat.X + 65 && X <= bat.X + bat.W*6/7)
                     {
                         speedX = 7;
                         speedY = -13;
                     }
-                    if (X + 20 >= bat.X + 110 && X <= bat.X + 130)
+                    if (X + W >= bat.X + 110 && X <= bat.X + bat.W)
                     {
                         speedX = 13;
                         speedY = -7;
@@ -86,22 +88,22 @@ namespace Arkanoid1
 
                 if (speedX < 0)
                 {
-                    if (X + 20 >= bat.X && X <= bat.X + 20)
+                    if (X + W >= bat.X && X <= bat.X + bat.W/7)
                     {
                         speedX = -13;
                         speedY = -7;
                     }
-                    if (X + 20 >= bat.X + 20 && X <= bat.X + 65)
+                    if (X + W >= bat.X + 20 && X <= bat.X + bat.W/2)
                     {
                         speedX = -7;
                         speedY = -13;
                     }
-                    if (X + 20 >= bat.X + 65 && X <= bat.X + 110)
+                    if (X + W >= bat.X + 65 && X <= bat.X + bat.W*6/7)
                     {
                         speedX = 7;
                         speedY = -13;
                     }
-                    if (X + 20 >= bat.X + 110 && X <= bat.X + 130)
+                    if (X + W >= bat.X + 110 && X <= bat.X + bat.W)
                     {
                         speedX = 13;
                         speedY = -7;
@@ -112,7 +114,7 @@ namespace Arkanoid1
 
         public void ToBeatOfTheTargets(Target targets)
         {
-            if (X <= targets.X + 32 && X + 20 >= targets.X && Y <= targets.Y + 32 && Y + 20 >= targets.Y)
+            if (X <= targets.X + targets.W && X + W >= targets.X && Y <= targets.Y + targets.H && Y + H >= targets.Y)
             {
                 speedY *= -1;
 

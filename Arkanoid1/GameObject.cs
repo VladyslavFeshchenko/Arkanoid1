@@ -9,22 +9,16 @@ namespace Arkanoid1
 {
     public abstract class GameObject
     {
-        private int x, y, offsetX, offsetY, w, h;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int OffsetX { get; set; }
+        public int OffsetY { get; set; }
+        public int W { get; set; }
+        public int H { get; set; }
 
-        private uint color;
+        public uint Color { get; set; }
 
-        private ConsoleImage image;
-
-        public int X { get { return x; } set { x = value; } }
-        public int Y { get { return y; } set { y = value; } }
-        public int OffsetX { get { return offsetX; } set { offsetX = value; } }
-        public int OffsetY { get { return offsetY; } set { offsetY = value; } }
-        public int W { get { return w; } set { w = value; } }
-        public int H { get { return h; } set { h = value; } }
-
-        public uint Color { get { return color; } set { color = value; } }
-
-        public ConsoleImage Image { get { return image; } set { image = value; } }
+        public ConsoleImage Image { get; set; }
 
         public virtual void Render(ConsoleGraphics graphics)
         {

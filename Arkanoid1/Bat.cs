@@ -10,17 +10,19 @@ namespace Arkanoid1
     public class Bat : GameObject
     {
 
-        public Bat(ConsoleGraphics graphics,int x, int y)
+        public Bat(ConsoleGraphics graphics,int x, int y, int w, int h)
         {
             X = x;
             Y = y;
+            W = w;
+            H = h;
 
             Image = graphics.LoadImage("breakout_sprites.png");
         }
 
         public override void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImagePart(Image, 0, 280, 130, 30, X, Y);
+            graphics.DrawImagePart(Image, 0, 280, W, H, X, Y);
         }
 
         public void UpdateBat(ConsoleGraphics graphics)
@@ -30,9 +32,9 @@ namespace Arkanoid1
             {
                 X += 40;
 
-                if (X >= graphics.ClientWidth - 130)
+                if (X >= graphics.ClientWidth - W)
                 {
-                    X = graphics.ClientWidth - 130;
+                    X = graphics.ClientWidth - W;
                 }
             }
 
