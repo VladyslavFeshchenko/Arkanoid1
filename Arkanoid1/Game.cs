@@ -18,8 +18,8 @@ namespace Arkanoid1
                 ConsoleGraphics graphics = new ConsoleGraphics();
                 Console.CursorVisible = false;
 
-                MenuButtons start = new MenuButtons(graphics, 0, 0, 200, 50, graphics.ClientWidth / 2 - 100, graphics.ClientHeight / 2 - 150);
-                MenuButtons exit = new MenuButtons(graphics, 200, 270, 190, 50, graphics.ClientWidth / 2 - 95, graphics.ClientHeight / 2);
+                Button start = new Button(graphics, 0, 0, 200, 50, graphics.ClientWidth / 2 - 100, graphics.ClientHeight / 2 - 150);
+                Button exit = new Button(graphics, 200, 270, 190, 50, graphics.ClientWidth / 2 - 95, graphics.ClientHeight / 2);
 
                 while (!exit.Push())
                 {

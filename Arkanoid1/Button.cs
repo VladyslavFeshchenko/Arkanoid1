@@ -7,11 +7,11 @@ using NConsoleGraphics;
 
 namespace Arkanoid1
 {
-    class MenuButtons : GameObject
+    class Button : GameObject
     {
         public bool push;
 
-        public MenuButtons(ConsoleGraphics graphics, int offsetX, int offsetY, int w, int h, int x, int y)
+        public Button(ConsoleGraphics graphics, int offsetX, int offsetY, int w, int h, int x, int y)
         {
 
             X = x;
